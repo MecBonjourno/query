@@ -1,0 +1,227 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/__/firebase/6.3.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-auth.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <p id="update">Name</p>
+    <p id="uid">UID</p>
+    <p id="ocupacao">Ocupacao</p>
+    <p id="twitter">twitter</p>
+    <p id="facebook">facebook</p>
+    <p id="insta">insta</p>
+    <p id="whats">whats</p>
+    <script>
+    window.onload = function() {
+    try {
+        var url_string = (window.location.href);
+        var url = new URL(url_string);
+        // var name = url.searchParams.get("name");
+        // var geo = url.searchParams.get("geo");
+        // var size = url.searchParams.get("size");
+        var uid = url.searchParams.get("uid");
+        var number = url.searchParams.get("profile");
+         console.log("O uid é: " + uid + "  O numero de perfil é: " + number);
+        //  console.log("O numero de perfil é: " + number);
+
+
+       
+
+        if(number){
+            window.location = "https://querymobile.co/ProfileV/profile="+number+".html";
+        }
+
+        let userDataMedia = db.collection('users').doc(uid);
+        let getDoc = userDataMedia.get()
+          .then(doc => {
+          if (!doc.exists) {
+            console.log('No such document!');
+          } else {
+
+            document.getElementById('update').innerHTML = '<h1>' + uid.displayName + ' </h1>';
+
+        document.getElementById('uid').innerHTML = '<h1>' + uid.uid + ' </h1>';
+            // document.getElementById('update').innerHTML = '<h1>' + uid.displayName + ' </h1>';
+
+            // document.getElementById('uid').innerHTML = '<h1>' + uid.uid + ' </h1>';
+
+            console.log('Document data:', doc.data());
+            var ocupacao = doc.data().ocupacao;
+            if(ocupacao === ""){}else{
+            document.getElementById('ocupacao').innerHTML = '<p class="w3-large w3-center", style="padding:1%;margin: 0;background-color: white;color: Black;text-align:center;text-color: black;" id="ocupacao">' + ocupacao + '</p>';
+            console.log(ocupacao);
+            }
+
+            var twitter = doc.data().twitter;
+            console.log(twitter);
+            if(twitter === ""){}else{
+            document.getElementById('twitter').innerHTML = '<a href="https://twitter.com/'+ twitter +'", style="text-decoration:none;">Twitter</a>' ;
+            }
+
+            var insta = doc.data().insta;
+            console.log(insta);
+            if(insta === ""){}else{
+            document.getElementById('insta').innerHTML = '<a href="https://www.instagram.com/'+ insta +'", style="text-decoration:none;">Instagram</a>' ;
+            }
+
+            var face = doc.data().face;
+            console.log(face);
+            if(face === ""){}else{
+            document.getElementById('facebook').innerHTML = '<a href="https://m.facebook.com/'+ face +'", style="text-decoration:none;">Facebook</a>' ;
+            }
+
+            var whats = doc.data().whats;
+            console.log(whats);
+            if(whats === ""){}else{
+            document.getElementById('whats').innerHTML = '<a href="https://wa.me/55'+ whats +'", style="text-decoration:none;">WhatsApp</a>' ;
+            }
+            
+            
+          }
+          }
+          )
+        
+
+
+    } catch (err) {
+        console.log("Issues with Parsing URL Parameter's - " + err);
+    }
+}
+    </script>
+
+<script>
+    var config = {
+    apiKey: "AIzaSyCSN5LLYy85L1WpePKAFfkvb4DXOYjNJcU",
+    authDomain: "teste-6b232.firebaseapp.com",
+    databaseURL: "https://teste-6b232.firebaseio.com",
+    projectId: "teste-6b232",
+    storageBucket: "teste-6b232.appspot.com",
+    messagingSenderId: "54239387189",
+    appId: "1:54239387189:web:d387e201b2ae7378"
+    };
+    firebase.initializeApp(config);
+
+    const db = firebase.firestore();
+    db.settings({timestampsInSnapshots:true});
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user)
+        }
+        }
+    )
+</script>
+<script>
+// firebase.auth().onAuthStateChanged(function(user) {
+//     if (user) {
+//         console.log(user)
+        
+//     }else{
+//         console.log("no user")
+//     }
+//     }
+// )
+
+    // var auth = firebase.auth();
+    // var storageRef = firebase.storage().ref();
+
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //     if (user) {
+    //       // User is signed in.
+    //       var displayName = user.displayName;
+    //       var email = user.email;
+    //       var emailVerified = user.emailVerified;
+    //       var photoURL = user.photoURL;
+    //       var isAnonymous = user.isAnonymous;
+    //       var uid = user.uid;
+    //       var providerData = user.providerData;
+
+          
+          
+    //       if(user){
+    //       let userDataMedia = db.collection('users').doc(user.uid);
+    //       let getDoc = userDataMedia.get()
+    //       .then(doc => {
+    //       if (!doc.exists) {
+    //         console.log('No such document!');
+    //       } else {
+            
+    //         console.log('Document data:', doc.data());
+    //         var ocupacao = doc.data().ocupacao;
+    //         if(ocupacao === ""){}else{
+    //         document.getElementById('ocupacao').innerHTML = '<p class="w3-large w3-center", style="padding:1%;margin: 0;background-color: white;color: Black;text-align:center;text-color: black;" id="ocupacao">' + ocupacao + '</p>';
+    //         console.log(ocupacao);
+    //         }
+
+    //         var twitter = doc.data().twitter;
+    //         console.log(twitter);
+    //         if(twitter === ""){}else{
+    //         document.getElementById('twitter').innerHTML = '<a href="https://twitter.com/'+ twitter +'", style="text-decoration:none;">Twitter</a>' ;
+    //         }
+
+    //         var insta = doc.data().insta;
+    //         console.log(insta);
+    //         if(insta === ""){}else{
+    //         document.getElementById('insta').innerHTML = '<a href="https://www.instagram.com/'+ insta +'", style="text-decoration:none;">Instagram</a>' ;
+    //         }
+
+    //         var face = doc.data().face;
+    //         console.log(face);
+    //         if(face === ""){}else{
+    //         document.getElementById('facebook').innerHTML = '<a href="https://m.facebook.com/'+ face +'", style="text-decoration:none;">Facebook</a>' ;
+    //         }
+
+    //         var whats = doc.data().whats;
+    //         console.log(whats);
+    //         if(whats === ""){}else{
+    //         document.getElementById('whats').innerHTML = '<a href="https://wa.me/55'+ whats +'", style="text-decoration:none;">WhatsApp</a>' ;
+    //         }
+    //        }
+    //       })
+    //      .catch(err => {
+    //         console.log('Error getting document', err);
+    //       });
+    //     }
+
+    //       console.log(user.photoURL);
+        
+    //     //   var filenameU = 'https://firebasestorage.googleapis.com/v0/b/teste-6b232.appspot.com/o/RJljc4c8DtURc3tO7anczzSsKi42%2Fimages%2Fprofilephoto.jpg?alt=media&token=877453de-0fca-49b9-840a-d14e10e23122';
+          
+    //     //   var filenameZ = 'undefined';
+    //     //   var filenameV = user.uid + '%2F'+ 'images%2F'+ filenameZ;
+          
+    //     //   if(filenameV === ""){}else{
+    //     //   document.getElementById('imagebox').innerHTML = '<img src="https://firebasestorage.googleapis.com/v0/b/teste-6b232.appspot.com/o/'+ filenameV +'?alt=media&token=877453de-0fca-49b9-840a-d14e10e23122 " style="width:100%;">';
+    //     //   }
+    //       //document.getElementById('imagebox').innerHTML = '<img src="'+ url +'?width=9999'+ ' " style="width:100%;">';
+    //       document.getElementById('update').innerHTML = '<h1>' + user.displayName + ' </h1>';
+
+    //       document.getElementById('uid').innerHTML = '<h1>' + user.uid + ' </h1>';
+    //     }
+    //   });
+
+    // window.onload = function() {
+    //     document.getElementById('file').addEventListener('change', handleFileSelect, false);
+    //     document.getElementById('file').disabled = true;
+
+    //     auth.onAuthStateChanged(function(user) {
+    //     if (user) {
+    //         console.log(user);
+    //         document.getElementById('file').disabled = false;
+    //     } else {
+    //         console.log('nothing bruh');
+    //     }
+    //     });
+    // }
+
+</script>
+
+</body>
+</html>

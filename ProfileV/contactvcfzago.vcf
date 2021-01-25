@@ -1,0 +1,20 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Mr. Guilherme Correa Zago
+N:Zago;Guilherme;Correa;Mr.;
+NICKNAME:Mec
+EMAIL;TYPE=INTERNET;TYPE=WORK:contatogzii@gmail.com
+item1.TEL:51 98150-8056
+item1.X-ABLabel:
+item2.ADR:;;Rua Ernesto Fontoura 1401;Porto Alegre;RS;90230091;BR
+item2.X-ABLabel:
+item3.ORG:QueRy Mobile;Information Technologies
+item3.X-ABLabel:
+item4.TITLE:CEO
+item4.X-ABLabel:
+BDAY:20000911
+item5.URL:https\://querymobile.co
+item5.X-ABLabel:
+PHOTO:https://lh3.googleusercontent.com/-aKZVNKUm1fw/Xbc4aunpOYI/AAAAAAAAAA
+ A/UXUz6iSNlmk1AJRGNNOz0YdPGnzER6jAQCOQCEAE/photo.jpg
+END:VCARD

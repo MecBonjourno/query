@@ -1,0 +1,25 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Alexsander Martins da Silva
+N:da Silva;Alexsander;Martins;;
+item1.EMAIL;TYPE=INTERNET:‎alexsanderadv@gmail.com
+item1.X-ABLabel:Email
+item2.TEL:51989505487
+item2.X-ABLabel:Celular
+item3.TEL:5132254546
+item3.X-ABLabel:Escritório - POA
+item4.TEL:6132577277
+item4.X-ABLabel:Escritório - BSB
+item5.ADR:;;Setor de Habitacoes individual Sul\, SHIS\, QI 5\, conjunto 02
+ \, casa 18\, Lago Sul Brasília DF 71615-020 Brasil;Brasília;DF;71615-020;BR
+item5.X-ABLabel:Escritório - BSB
+item6.ADR:;;Rua Jerônimo Coelho\, 212\, Conjunto 502\, Centro Histórico Por
+ to Alegre RS 90010-140 Brasil;Porto Alegre;RS;90010-140;BR
+item6.X-ABLabel:Escritório - POA
+item7.ORG:Della Giustina & Martins
+item7.X-ABLabel:
+item8.TITLE:Advogado
+item8.X-ABLabel:
+PHOTO:https://lh5.googleusercontent.com/-9vud4HqZwZc/XdPfPitjnoI/AAAAAAAAAA
+ A/K8VgHous3IYJq_YlYakOGTyVSXElqXgyACOQCEAE/photo.jpg
+END:VCARD
