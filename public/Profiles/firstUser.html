@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>QueRy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="../CSS/template.css">
+<link rel="stylesheet" href="../CSS/landingPage.css">
+<script src="/__/firebase/6.3.3/firebase-app.js"></script>
+<script src="/__/firebase/6.3.3/firebase-auth.js"></script>
+<script src="/__/firebase/6.3.3/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
+
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+</style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7383631686274743",
+          enable_page_level_ads: true
+     });
+</script>
+</head>
+<body>
+    <div class="preload"> 
+        <img class="logo" src="../IMGS/logoBeta2.png" alt="logo"> 
+      </div>
+      
+      <nav id="menu" class="navBar" style="color: white;">
+        <div class="content-form">
+          <form class="logged-in" id="add-link" style="width: 100%;">
+             <input type="text" name="twitter"  placeholder="Twitter" > 
+             <input type="text" name="insta" placeholder="Instagram"> 
+             <input type="text" name="face" placeholder="Facebook"> 
+          <button style="width: 100%;">Update</button>
+              </form>
+              <ul id="link-list"></ul>
+           </div>
+          <a onclick="closeMenu()" id="closeBtn" > X </a>
+    </nav>
+    <a onclick="showMenu()" id="menuIcon"> Menu</a>
+
+
+  <div>
+      <!-- <h3>User Photo:</h3> -->
+      <span id="imagebox"></span>
+    <!-- <img src="../IMGS/" alt="ProfileImage" style="width:100%"> -->
+  </div>
+  <div>
+    <h1 class="w3-jumbo w3-animate-top", style="padding:1%;margin: 0;background-color: white;color: Black;text-align:center;text-color: black;" id="nameUser"></h1>
+    <hr class="w3-border-grey" style="background-color: white;margin:auto;width:40%;">
+    <p class="w3-large w3-center", style="padding:1%;margin: 0;background-color: white;color: Black;text-align:center;text-color: black;">Ocupação</p>
+  </div>
+  <div class="vertical-menu">
+   <a href="../index.html", style="text-decoration:none;text-align:center; color: black;background-color: rgb(68, 68, 128);" class="active">Home</a>
+   <a href="chat.html", style="text-decoration:none;text-align:center;">Chat V0.0.1</a>   
+     <p class="w3-large w3-center", style="width: 100%;background-color: white;border: 1px black;margin: 0;color: #000;text-align:center;" id="twitter"> </p> 
+     <p class="w3-large w3-center", style="width: 100%;background-color: white;border: 1px black;margin: 0;color: #000;text-align:center;" id="facebook"> </p>  
+    <p class="w3-large w3-center", style="width: 100%;background-color: white;border: 1px black;margin: 0;color: #000;text-align:center;" id="insta"> </p> 
+    <p class="w3-large w3-center", style="width: 100%;background-color: white;border: 1px black;margin: 0;color: #000;text-align:center; display: inline;" id="qrcode"> </p> 
+   
+  <!-- <div class="content-form">
+  <form class="logged-in" id="add-link" style="width: 100%;">
+     <input type="text" name="twitter"  placeholder="Twitter" > 
+     <input type="text" name="insta" placeholder="Instagram"> 
+     <input type="text" name="face" placeholder="Facebook"> 
+  <button style="width: 100%;">Update</button>
+      </form>
+      <ul id="link-list"></ul> -->
+  <!-- </div> -->
+    </div>
+
+    <!-- <div class="lookatthis">
+        <form id="look-for">
+        <input type="text" placeholder="UID">
+        </form>
+     <button style="width: 100%;">Search</button>
+    </div> -->
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <a href="../index.html", style="text-decoration: none;"> QueRy </a>
+  </div>
+  <div id="site-content">
+    <p class="footer-company-motto", style="text-align:center;">Digital ID</p>
+
+    <p class="footer-links", style="text-align:center;">
+      <a href="../index.html", style="text-decoration: none;">Home</a>
+      .
+      <a href="../HTML/testpage.html", style="text-decoration: none;">Contact</a>
+    </p>
+
+    <p class="footer-company-name", style="text-align:center;">QueRy &copy; 2019</p>
+  </div>
+ <div id="site-footer">
+ </div>
+</div>
+
+<script src="qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById('qrcode'), 'https://querymobile.co/uniqueProfile/template.html');
+</script>
+
+
+<script>
+    // Initialize Firebase
+    var config = {
+    apiKey: "AIzaSyCSN5LLYy85L1WpePKAFfkvb4DXOYjNJcU",
+    authDomain: "teste-6b232.firebaseapp.com",
+    databaseURL: "https://teste-6b232.firebaseio.com",
+    projectId: "teste-6b232",
+    storageBucket: "teste-6b232.appspot.com",
+    messagingSenderId: "54239387189",
+    appId: "1:54239387189:web:d387e201b2ae7378"
+    };
+    firebase.initializeApp(config);
+
+    const db = firebase.firestore();
+    db.settings({timestampsInSnapshots:true});
+</script>
+
+
+<script>
+  function initApp() {
+      // Result from Redirect auth flow.
+      // [START getidptoken]
+      firebase.auth().getRedirectResult().then(function(result) {
+         if (result.credential) {
+    //       // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+    //       // [START_EXCLUDE]
+          document.getElementById('quickstart-oauthtoken').textContent = token;
+         } else {
+    //       // document.getElementById('quickstart-oauthtoken').textContent = 'null';
+    //       // [END_EXCLUDE]
+      }
+    //     // The signed-in user info.
+         var user = result.user;
+      }).catch(function(error) {
+    //     // Handle Errors here.
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     // The email of the user's account used.
+    //     var email = error.email;
+    //     // The firebase.auth.AuthCredential type that was used.
+    //     var credential = error.credential;
+    //     // [START_EXCLUDE]
+         if (errorCode === 'auth/account-exists-with-different-credential') {
+    //       alert('You have already signed up with a different auth provider for that email.');
+    //       // If you are using multiple auth providers on your app you should handle linking
+    //       // the user's accounts here.
+        } else {
+          console.error(error);
+        }
+        // [END_EXCLUDE]
+      });
+    
+    }
+
+firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          var displayName = user.displayName;
+          var email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          var isAnonymous = user.isAnonymous;
+          var uid = user.uid;
+          var providerData = user.providerData;
+          
+          if(user){
+          let userDataMedia = db.collection('users').doc(user.uid);
+          let getDoc = userDataMedia.get()
+          .then(doc => {
+          if (!doc.exists) {
+            console.log('No such document!');
+          } else {
+            console.log('Document data:', doc.data());
+            //console.log('twitter:', doc.data().twitter);
+            var twitter = doc.data().twitter;
+            console.log(twitter);
+            document.getElementById('twitter').innerHTML = '<a href="https://twitter.com/'+ twitter +'", style="text-decoration:none;">Twitter</a>' ;
+            var insta = doc.data().insta;
+            console.log(insta);
+            document.getElementById('insta').innerHTML = '<a href="https://www.instagram.com/'+ insta +'", style="text-decoration:none;">Instagram</a>' ;
+            var face = doc.data().face;
+            console.log(face);
+            document.getElementById('facebook').innerHTML = '<a href="https://www.facebook.com/'+ face +'", style="text-decoration:none;">Facebook</a>' ;
+           }
+          })
+         .catch(err => {
+            console.log('Error getting document', err);
+          });
+        }
+
+          // [START_EXCLUDE]
+          // document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+          // document.getElementById('quickstart-sign-in').textContent = 'Sign out';
+          // document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+          console.log(user.photoURL);
+          document.getElementById('imagebox').innerHTML = '<img src="'+ user.photoURL +'?width=9999'+ ' " style="width:100%;">';
+          document.getElementById('nameUser').innerHTML = '<h1>' + user.displayName + ' </h1>';
+                 // document.getElementById('twitter').innerHTML = '<a href="https://twitter.com/'+ twitter +'", style="text-decoration:none;">Twitter</a>' ;
+                  //document.getElementById('facebook').innerHTML = '<a href="'+ user.facebook +'", style="text-decoration:none;">Facebook</a>' ;
+                  //document.getElementById('insta').innerHTML = '<a href="'+ insta +'", style="text-decoration:none;">Instagram</a>' ;
+         // [END_EXCLUDE]
+        }
+      });
+
+      window.onload = function() {
+      initApp();
+    };
+
+    //teste criação de media
+  
+</script>
+
+<script src="../uniqueProfile/UIchanges.js"></script>
+<script src="apptestcopy.js"></script>
+<script src="../JS/preload.js"></script>
+
+<!-- // <script src="../testesjs.js"></script> -->
+
+
+</body>
+</html>

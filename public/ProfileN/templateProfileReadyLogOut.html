@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Hotjar Tracking Code for querymobile.co -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1556655,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148566962-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-148566962-1');
+  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Crie seu ID!">
+    <title>QueRy</title>
+    <link rel="shortcut icon" href="../IMGS/img/logoBeta3.png">
+    <link rel="stylesheet" href="../CSS/template.css">
+    <link rel="stylesheet" href="../CSS/landingPage.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <script src="/__/firebase/6.3.3/firebase-app.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-auth.js"></script>
+    <script src="/__/firebase/6.3.3/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+  <style>
+  body,h1 {font-family: "Poppins", sans-serif}
+  body, html {height: 100%}
+  </style>
+</head>
+<body>
+    <div class="preload"> 
+        <img class="logo" src="../IMGS/logoBeta2.png" alt="logo"> 
+      </div>
+        <nav id="menu" class="navBar" style="color: black;">
+                <p style="color:black;font-size: 14px;">Insira seus dados clique em Update e recarregue a página! (Não precisa colocar @!)</p>
+              <div class="content-form">
+                <form class="logged-in" id="add-link" style="width: 100%;">
+                  <br>
+                  <br>
+                   <input type="text" name="twitter"  placeholder="Twitter (Sem @)"> 
+                   <input type="text" name="insta" placeholder="Instagram (Sem @)"> 
+                   <input type="text" name="face" placeholder="Facebook"> 
+                   <input type="text" name="whats" placeholder="WhatsApp (5199999999)"> 
+                   <input type="text" name="ocupacao" placeholder="Ocupação (Bio)"> 
+                   <br>
+                   <br>
+                   <h4 class="buttonUpload">Upload a photo!</h4>
+                   <input type="file" id="file" name="file"/>
+                <button style="width: 100%;" onclick="closeMenu(), Swal.fire({type: 'success',title: 'Your profile has been Updated!',text: 'Don`t forget to reload the page ; )',showConfirmButton: true})">Update</button>
+                    </form>
+                    <ul id="link-list"></ul>
+                 </div>
+                <a onclick="closeMenu()" id="closeBtn" > X </a>
+          </nav>
+          <a onclick="showMenu()" id="menuIcon" style="z-index: 10;" > Menu</a>
+            <div>
+                <a style="z-index: 9;display: block;position: absolute;top: 20px;left: 20px;" onclick="window.location.reload()"><img src="../IMGS/img/refresh.png" alt="" style="max-height: 20px;max-width: 20px;"></a>
+                <span id="imagebox"></span>
+            </div>
+              <div>
+                    <h1 class="w3-jumbo w3-animate-top", style="padding:1%;margin: 0;background-color: white;color: Black;text-align:center;text-color: black;" id="nameUser"></h1>
+                    <hr class="w3-border-grey" style="background-color: white;margin:auto;width:40%;">
+                    <p class="w3-large w3-center", style="padding:1%;margin: 0;background-color: white;color: Black;text-align:center;text-color: black;" id="ocupacao"></p>
+                  </div>
+                  <div class="vertical-menu">
+                   <a href="../index.html", style="text-decoration:none;text-align:center; color: black;background-color: rgb(68, 68, 128);" class="active">Home</a>
+                   <!-- <a href="chat.html", style="text-decoration:none;text-align:center;">Chat V0.0.1</a>    -->
+          <p class="w3-large w3-center", style="width: 100%;background-color: white;border: 1px black;margin: 0;color: #000;text-align:center;" id="twitter"> </p> 
+          <p class="w3-large w3-center", style="width: 100%;background-color: white;border: 1px black;margin: 0;color: #000;text-align:center;" id="facebook"> </p>  
+          <p class="w3-large w3-center", style="width: 100%;background-color: white;border: 1px black;margin: 0;color: #000;text-align:center;" id="insta"> </p> 
+          <p class="w3-large w3-center", style="width: 100%;background-color: white;border: 1px black;margin: 0;color: #000;text-align:center;" id="whats"> </p> 
+        </div>
+        <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+            <div class="w3-display-topleft w3-padding-large w3-xlarge">
+              <a href="../index.html", style="text-decoration: none;"> QueRy </a>
+            </div>
+            <div id="site-content">
+              <p class="footer-company-motto", style="text-align:center;">Digital ID</p>
+          
+              <p class="footer-links", style="text-align:center;">
+                <a href="../index.html", style="text-decoration: none;">Home</a>
+                .
+                <a href="../HTML/testpage.html", style="text-decoration: none;">Contact</a>
+              </p>
+              
+              <p class="footer-company-name", style="text-align:center;">QueRy &copy; 2020</p>
+              <br>
+            </div>
+           <div id="site-footer">
+           </div>
+          </div>
+<script>
+    var config = {
+    apiKey: "AIzaSyCSN5LLYy85L1WpePKAFfkvb4DXOYjNJcU",
+    authDomain: "teste-6b232.firebaseapp.com",
+    databaseURL: "https://teste-6b232.firebaseio.com",
+    projectId: "teste-6b232",
+    storageBucket: "teste-6b232.appspot.com",
+    messagingSenderId: "54239387189",
+    appId: "1:54239387189:web:d387e201b2ae7378"
+    };
+    firebase.initializeApp(config);
+
+    const db = firebase.firestore();
+    db.settings({timestampsInSnapshots:true});
+</script>
+
+<script>
+    var auth = firebase.auth();
+    var storageRef = firebase.storage().ref();
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          var displayName = user.displayName;
+          var email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          var isAnonymous = user.isAnonymous;
+          var uid = user.uid;
+          var providerData = user.providerData;
+
+          
+          
+          if(user){
+          let userDataMedia = db.collection('users').doc(user.uid);
+          let getDoc = userDataMedia.get()
+          .then(doc => {
+          if (!doc.exists) {
+            console.log('No such document!');
+          } else {
+            
+            console.log('Document data:', doc.data());
+            var ocupacao = doc.data().ocupacao;
+            if(ocupacao === ""){}else{
+            document.getElementById('ocupacao').innerHTML = '<p class="w3-large w3-center", style="padding:1%;margin: 0;background-color: white;color: Black;text-align:center;text-color: black;" id="ocupacao">' + ocupacao + '</p>';
+            console.log(ocupacao);
+            }
+
+            var twitter = doc.data().twitter;
+            console.log(twitter);
+            if(twitter === ""){}else{
+            document.getElementById('twitter').innerHTML = '<a href="https://twitter.com/'+ twitter +'", style="text-decoration:none;">Twitter</a>' ;
+            }
+
+            var insta = doc.data().insta;
+            console.log(insta);
+            if(insta === ""){}else{
+            document.getElementById('insta').innerHTML = '<a href="https://www.instagram.com/'+ insta +'", style="text-decoration:none;">Instagram</a>' ;
+            }
+
+            var face = doc.data().face;
+            console.log(face);
+            if(face === ""){}else{
+            document.getElementById('facebook').innerHTML = '<a href="https://m.facebook.com/'+ face +'", style="text-decoration:none;">Facebook</a>' ;
+            }
+
+            var whats = doc.data().whats;
+            console.log(whats);
+            if(whats === ""){}else{
+            document.getElementById('whats').innerHTML = '<a href="https://wa.me/55'+ whats +'", style="text-decoration:none;">WhatsApp</a>' ;
+            }
+           }
+          })
+         .catch(err => {
+            console.log('Error getting document', err);
+          });
+        }
+
+          console.log(user.photoURL);
+        
+        //   var filenameU = 'https://firebasestorage.googleapis.com/v0/b/teste-6b232.appspot.com/o/RJljc4c8DtURc3tO7anczzSsKi42%2Fimages%2Fprofilephoto.jpg?alt=media&token=877453de-0fca-49b9-840a-d14e10e23122';
+          
+          var filenameZ = 'undefined';
+          var filenameV = user.uid + '%2F'+ 'images%2F'+ filenameZ;
+          
+          if(filenameV === ""){}else{
+          document.getElementById('imagebox').innerHTML = '<img src="https://firebasestorage.googleapis.com/v0/b/teste-6b232.appspot.com/o/'+ filenameV +'?alt=media&token=877453de-0fca-49b9-840a-d14e10e23122 " style="width:100%;">';
+          }
+          //document.getElementById('imagebox').innerHTML = '<img src="'+ url +'?width=9999'+ ' " style="width:100%;">';
+          document.getElementById('nameUser').innerHTML = '<h1>' + user.displayName + ' </h1>';
+
+        }
+      });
+
+      
+
+
+    function handleFileSelect(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+        var file = evt.target.files[0];
+
+        var metadata = {
+        'contentType': file.type
+        };
+
+        var user = firebase.auth().currentUser;
+        userId = user.uid;
+        storageRef.child(user.uid +'/' + 'images/'+ file.uid).put(file, metadata).then(function(snapshot) {
+        snapshot.ref.getDownloadURL().then(function(url) {
+            console.log('File available at', url);
+            document.getElementById('imagebox').innerHTML = '<img src="'+ url +'?width=9999'+ ' " style="width:100%;">';
+        });
+        }).catch(function(error) {
+        // [START onfailure]
+        console.error('Upload failed:', error);
+        // [END onfailure]
+        });
+        // [END oncomplete]
+    }
+
+    window.onload = function() {
+        document.getElementById('file').addEventListener('change', handleFileSelect, false);
+        document.getElementById('file').disabled = true;
+
+        auth.onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user);
+            document.getElementById('file').disabled = false;
+        } else {
+            console.log('nothing bruh');
+        }
+        });
+    }
+
+    </script>
+
+<!-- <script>
+  firebase.auth().onAuthStateChanged( user => {
+if (user) {
+    userId = user.uid;
+    window.location = "../ProfileN/templateProfileReady.html";
+    } else {
+    console.log('no user');
+    }
+})
+</script> -->
+
+<!-- <script src="redirectTest.js"></script> -->
+<script src="../uniqueProfile/UIchanges.js"></script>
+<script src="../uniqueProfile/apptest.js"></script>
+<script src="../JS/preload.js"></script>
+</body>
+</html>

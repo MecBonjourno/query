@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<title>QueRy</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7383631686274743",
+          enable_page_level_ads: true
+     });
+</script>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="bcQQLCxSzfb8entkXUDQVt6Eq9pPhrxASqy1Wau4zBk" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('../IMGS/testetextu.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <a href="../index.html", style="text-decoration: none;"> QueRy </a>
+  </div>
+  <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-animate-top", style="text-align:center;">Obrigado!</h1>
+    <p class="w3-animate-top", style="text-align:center;"> Você agora está na lista de cadastro da QueRy, em breve estaremos entrando contato e disponibilizando nossos produtos!</p>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <p class="w3-large w3-center">TBA 2019</p>
+    <p class="w3-large w3-center"> <a href="../index.html", style="text-decoration: none;">Início</a> </p>
+    <p class="w3-large w3-center"> <a href="../uniqueProfile/template.html", style="text-decoration: none;">Edite seu perfil!</a> </p>
+    <p class="w3-large w3-center"> <a href="#", style="text-decoration: none;" id="logoutbtn">Log Out</a> </p>
+    
+  </div>
+  <div class="w3-display-bottomleft w3-padding-large">
+    Digital Signature - <a href="https://twitter.com/Zagoguic"> MecBonjuorno</a>
+    <!-- <a href="HTML/404.html">Restricted Area</a> -->
+  </div>
+</div>
+
+<script src="/__/firebase/6.1.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.1.0/firebase-auth.js"></script>
+    <script src="/__/firebase/6.1.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.1.0/firebase-functions.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+        apiKey: "AIzaSyCSN5LLYy85L1WpePKAFfkvb4DXOYjNJcU",
+        authDomain: "querymobile.co",
+        databaseURL: "https://teste-6b232.firebaseio.com",
+        projectId: "teste-6b232",
+        storageBucket: "teste-6b232.appspot.com",
+        messagingSenderId: "54239387189",
+        appId: "1:54239387189:web:d387e201b2ae7378"
+      };
+      firebase.initializeApp(config);
+  // make auth and firestore references
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+  const functions = firebase.functions();
+
+</script>
+
+<script>
+  auth.onAuthStateChanged(user => {
+      console.log(user);
+  })
+</script>
+
+<script src="../scripts/logIn.js"></script>
+</body>
+</html>
