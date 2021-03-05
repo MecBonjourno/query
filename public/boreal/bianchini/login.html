@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/login.css" />
+    <title>Boreal - QueRy Login</title>
+</head>
+<body>
+    <header id="header2" class="alt">
+    <h1><a href="index.html">Boreal - Terminal Bianchini</a></h1>
+</header>
+    <div class="container">
+        <div class="formstyle">
+        <img src="../images/boreal.png" />
+        <h2></h2>
+        <form>
+            <label for="pswd">Insira a Senha: </label>
+            <input type="password" id="pswd">
+            <br>
+            <button type="button" value="Enviar" onclick="checkPswd();">Enviar</button>
+        </form>
+    </div>
+    </div>
+<script type="text/javascript">
+    function checkPswd() {
+        var confirmPassword = "123456";
+        var password = document.getElementById("pswd").value;
+        if (password == confirmPassword) {
+             window.location="form.html";
+        }
+        else{
+            alert("Passwords do not match.");
+        }
+    }
+</script>
+</body>
+</html>
